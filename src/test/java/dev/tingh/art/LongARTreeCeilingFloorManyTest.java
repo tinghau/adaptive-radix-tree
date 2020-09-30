@@ -24,6 +24,8 @@ public class LongARTreeCeilingFloorManyTest {
     public LongARTreeCeilingFloorManyTest() {
         Random random = new Random(190880900);
 
+        boolean seen = false;
+
         for (int i = 0; i < 20000; i++) {
             long value =  random.nextLong();
 
@@ -130,6 +132,15 @@ public class LongARTreeCeilingFloorManyTest {
         logger.info("Key: " + toNodeLevelKeys(9223371440841164470L));
 
         assertNull(longARTree.getCeiling(9223371440841164470L));
+    }
+
+    @Test
+    public void testGetCeilingOnDifferentBranch9() {
+        logger.info("Test: testGetCeilingOnDifferentBranch9()");
+        logger.info("Key: " + toNodeLevelKeys(-2145650666781104482L));
+        logger.info("Expected: " + toNodeLevelKeys(-2143058402134791360L));
+
+        assertEquals("-2143058402134791360", longARTree.getCeiling(-2145650666781104482L));
     }
 
     @Test

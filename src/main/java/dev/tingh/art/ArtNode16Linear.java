@@ -14,7 +14,7 @@ public class ArtNode16Linear<V> implements IArtNode<V> {
     private final int shift;
     private final long key;
 
-    private short count = 0;
+    protected short count = 0;
 
     public ArtNode16Linear(long key) {
         this(key, 0);
@@ -29,8 +29,9 @@ public class ArtNode16Linear<V> implements IArtNode<V> {
     public ArtNode16Linear(ArtNode4<V> node) {
         this(node.getKey(), node.getDepth());
 
-        this.count = 4;
-        for (int i=0; i<4; i++) {
+        this.count = node.getCount();
+
+        for (int i=0; i<node.getCount(); i++) {
             this.keys[i] = node.keys[i];
             this.nodes[i] = node.nodes[i];
         }

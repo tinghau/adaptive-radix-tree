@@ -24,8 +24,18 @@ public class ArtNode48Test extends ArtNodeTest {
     }
 
     @Test
-    public void testArtNode48FromArtNode16() {
+    public void testArtNode48FromArtNode16Linear() {
         ArtNode16Linear<String> node16 = new ArtNode16Linear<>(779682134);
+        IntStream.range(0, 16).forEach(i -> node16.put(779682134L + i, String.valueOf(i)));
+
+        ArtNode48<String> node48 = new ArtNode48<>(node16);
+        assertEquals("0", node48.get(779682134L));
+        assertEquals("15", node48.get(779682149L));
+    }
+
+    @Test
+    public void testArtNode48FromArtNode16BinarySearch() {
+        ArtNode16BinarySearch<String> node16 = new ArtNode16BinarySearch<>(779682134);
         IntStream.range(0, 16).forEach(i -> node16.put(779682134L + i, String.valueOf(i)));
 
         ArtNode48<String> node48 = new ArtNode48<>(node16);

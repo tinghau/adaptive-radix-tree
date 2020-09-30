@@ -9,14 +9,14 @@ import static java.util.Arrays.binarySearch;
 
 public class ArtNode16BinarySearch<V> implements IArtNode<V> {
 
-    private final short[] keys = new short[16];
-    private final Object[] nodes = new Object[16];
+    protected final short[] keys = new short[16];
+    protected final Object[] nodes = new Object[16];
 
     private final int depth;
     private final int shift;
     private final long key;
 
-    private short count = 0;
+    protected short count = 0;
 
     public ArtNode16BinarySearch(long key) {
         this(key,0);
@@ -32,8 +32,7 @@ public class ArtNode16BinarySearch<V> implements IArtNode<V> {
         this(node.getKey(), node.getDepth());
 
         for (int i = 0; i < node.getCount(); i++) {
-            this.keys[i] = node.keys[i];
-            this.nodes[i] = node.nodes[i];
+            insert(node.keys[i], node.nodes[i]);
         }
         this.count = node.getCount();
     }

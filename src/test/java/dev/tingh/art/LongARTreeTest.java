@@ -21,7 +21,7 @@ public class LongARTreeTest {
     private static final long key6 = 779682635;            // [0, 0, 0, 0, 46, 121, 3, 75]
     private static final long key7 = 779748171;            // [0, 0, 0, 0, 46, 122, 3, 75]
     private static final long key8 = 779748172;            // [0, 0, 0, 0, 46, 122, 3, 76]
-    private static final long key9 = 100000000779682635L;  // [1, 99, 69, 120, -116, 3, 3, 75]
+    private static final long key9 = 100000000779682635L;  // [1, 99, 69, 120, 140, 3, 3, 75]
 
     private LongARTree<String> longARTree;
 

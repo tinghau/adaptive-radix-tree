@@ -57,7 +57,7 @@ public class ArtNode256<V> implements IArtNode<V> {
 
     @Override
     public boolean isFull() {
-        return count == 256;
+        return false;
     }
 
     @Override

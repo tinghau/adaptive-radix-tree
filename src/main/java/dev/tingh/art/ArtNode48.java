@@ -39,6 +39,17 @@ public class ArtNode48<V> implements IArtNode<V> {
         }
     }
 
+    public ArtNode48(ArtNode16BinarySearch<V> node) {
+        this(node.getKey(), node.getDepth());
+
+        this.count = node.getCount();
+
+        for (short i=0; i<node.getCount(); i++) {
+            this.index[node.keys[i]] = i;
+            this.nodes[i] = node.nodes[i];
+        }
+    }
+
     public ArtNode48(ArtNode256<V> node) {
         this(node.getKey(), node.getDepth());
 

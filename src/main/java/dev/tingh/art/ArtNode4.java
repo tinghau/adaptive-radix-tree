@@ -38,6 +38,16 @@ public class ArtNode4<V> implements IArtNode<V> {
         count = node.getCount();
     }
 
+    public ArtNode4(ArtNode16BinarySearch<V> node) {
+        this(node.getKey(), node.getDepth());
+
+        for (int i=0; i < node.getCount(); i++) {
+            this.keys[i] = node.keys[i];
+            this.nodes[i] = node.nodes[i];
+        }
+        count = node.getCount();
+    }
+
     @Override
     public long getKey() {
         return key;

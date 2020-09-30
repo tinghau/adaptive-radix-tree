@@ -2,10 +2,11 @@ package dev.tingh.art;
 
 import static dev.tingh.art.ArtNodes.inNode;
 
-public class LongARTree<V> {
+public class LongARTree<V> implements ILongARTree<V> {
 
     private IArtNode<V> root;
 
+    @Override
     public V get(long key) {
         return get(root, key);
     }
@@ -22,6 +23,7 @@ public class LongARTree<V> {
         return get(next, key);
     }
 
+    @Override
     public boolean contains(long key) {
         return contains(root, key);
     }
@@ -39,6 +41,7 @@ public class LongARTree<V> {
     }
 
     // Least key greater than or equal to the given key.
+    @Override
     public V getCeiling(long key) {
         return getCeiling(root, key);
     }
@@ -148,6 +151,7 @@ public class LongARTree<V> {
         return newKey;
     }
 
+    @Override
     public V getFloor(long key) {
         return getFloor(root, key);
     }
@@ -249,6 +253,7 @@ public class LongARTree<V> {
         return minusOne;
     }
 
+    @Override
     public void put(long key, V leaf) {
         put(root, key, leaf);
     }
@@ -352,6 +357,7 @@ public class LongARTree<V> {
         return newNode;
     }
 
+    @Override
     public IArtNode<V> getParent(long key, int parentDepth) {
         return getParent(root, key, parentDepth);
     }
@@ -394,11 +400,12 @@ public class LongARTree<V> {
         root = node;
     }
 
+    @Override
     public V remove(long key) {
         return remove(root, key);
     }
 
-    public V remove(IArtNode<V> node, long key) {
+    private V remove(IArtNode<V> node, long key) {
         V result = null;
 
         if (node != null) {
@@ -408,7 +415,7 @@ public class LongARTree<V> {
             } else {
                 Object next = node.get(key);
                 if (next instanceof IArtNode) {
-                    remove((IArtNode<V>) next, key);
+                    result = remove((IArtNode<V>) next, key);
                 }
             }
         }
@@ -417,7 +424,8 @@ public class LongARTree<V> {
 
     private void shrinkAndCompress(IArtNode<V> node) {
         if (node.canShrink()) {
-            node = shrink(node);
+            IArtNode<V> newNode = shrink(node);
+            replace(node, newNode);
         }
         compress(node);
     }
@@ -434,6 +442,7 @@ public class LongARTree<V> {
                     ArtNode4<V> node4 = (ArtNode4<V>) parent;
                     replace(parent, (IArtNode<V>) node4.nodes[0]);
                 }
+                shrinkAndCompress(parent);
             }
         }
     }

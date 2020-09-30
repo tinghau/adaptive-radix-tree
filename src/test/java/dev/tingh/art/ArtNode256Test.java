@@ -50,4 +50,11 @@ public class ArtNode256Test extends ArtNodeTest {
     public void testRemoveInvalidKeyFromFull() {
         // Not a valid test because once a 256 node is full, all keys become valid.
     }
+
+    @Override
+    @Test
+    public void testIsFullTrue() {
+        // Not a valid test because 256 is "never" full, it always accepts addtions.
+    }
+
 }
