@@ -9,6 +9,7 @@ I built this project purely out of interest and is not used elsewhere.
 However, the implementation is well-tested, currently with the following test coverage: 
 100% class (10/10), 94% method (179/189), 93% line (784/835) coverage.
 This adaptive radix tree implementation performs favourably compared to TreeMap (OpenJDK-14) and Long2ObjectRBMap (fastutil-8.4.1).
+More commentary can be found here: https://tingh.dev/2020/11/02/adaptive-radix-trees-benchmarks.html
 
 ### Installation
 This module builds using Gradle.
